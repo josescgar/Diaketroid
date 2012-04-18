@@ -3,5 +3,8 @@
 
     <string name="hello">Hello World, DiaketroidActivity!</string>
     <string name="app_name">Diaketroid</string>
+    <string name="nombredeusuario">Nombre de usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Identificarse</string>
 
 </resources>

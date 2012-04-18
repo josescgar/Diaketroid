@@ -27,7 +27,7 @@ import android.content.Context;
  * @author spiotrowski
  *
  */
-public class SendDataHTTP {
+public class EnviarHTTP {
 
 	final static String SERVERURL_SENDGEO = "http://130.149.223.110/backend/webpage/android/locationProcessing.php";
 	final static String SERVERURL_SENDMEDIA = "http://130.149.223.110/backend/webpage/android/mediaProcessing.php";
