@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:padding="20dip"
+    android:background="@drawable/telon" >
+    
+	<Button android:id="@+id/botonModificarCuota"
+        	android:text="@string/modificarCuota"
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_centerInParent="true" 
+        	android:layout_marginBottom="20dip"
+        	android:layout_above="@+id/botonCancelarCuota"/>
+	
+	<Button android:id="@+id/botonCancelarCuota"
+        	android:text="@string/cancelarCuota"
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_centerInParent="true" />
+	
+</RelativeLayout>

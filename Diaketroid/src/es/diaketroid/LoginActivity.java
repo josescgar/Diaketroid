@@ -1,13 +1,14 @@
 package es.diaketroid;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class DiaketroidActivity extends Activity {
+public class LoginActivity extends Activity {
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -18,8 +19,13 @@ public class DiaketroidActivity extends Activity {
     public void identificarse(View v){
     	String username = ((EditText)findViewById(R.id.campoNombre)).getText().toString();
     	String password = ((EditText)findViewById(R.id.campoPassword)).getText().toString();
-    	LoginTask task = new LoginTask();
-    	task.execute(username,password);
+    	
+    	Intent intent = new Intent(this, PrincipalActivity.class);
+		startActivity(intent);
+		finish();
+		
+    	//LoginTask task = new LoginTask();
+    	//task.execute(username,password);
     }
     
     class LoginTask extends AsyncTask<String,Void,String>{

@@ -6,5 +6,8 @@
     <string name="nombredeusuario">Nombre de usuario</string>
     <string name="password">Contraseña</string>
     <string name="login">Identificarse</string>
+    <string name="logo">Logo</string>
+    <string name="modificarCuota">Modificar cuota</string>
+    <string name="cancelarCuota">Cancelar cuota</string>
 
 </resources>
