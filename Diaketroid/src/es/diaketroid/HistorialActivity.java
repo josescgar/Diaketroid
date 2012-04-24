@@ -7,9 +7,6 @@ import android.widget.TextView;
 public class HistorialActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        TextView textview = new TextView(this);
-        textview.setText("This is the historial tab");
-        setContentView(textview);
+        setContentView(R.layout.historial);
     }
 }

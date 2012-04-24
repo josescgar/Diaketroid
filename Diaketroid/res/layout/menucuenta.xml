@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo" >
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/layoutBotones"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp" >
+
+            <TextView
+                android:id="@+id/textoNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/campoNombre"
+                android:layout_alignParentTop="true"
+                android:inputType="textPersonName"
+                android:text="@string/nombre" />
+
+            <EditText
+                android:id="@+id/campoNombre"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textoNombre"
+                android:focusable="false"
+                android:layout_centerHorizontal="true"
+                android:singleLine="true" />
+
+            <TextView
+                android:id="@+id/textoApellidos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/campoApellidos"
+                android:layout_below="@+id/campoNombre" 
+                android:text="@string/apellidos" />
+
+            <EditText
+                android:id="@+id/campoApellidos"
+                android:layout_width="fill_parent"
+                android:focusable="false"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textoApellidos"
+                android:layout_centerHorizontal="true"
+                android:inputType="textPersonName"
+                android:singleLine="true" />
+            
+            <TextView
+                android:id="@+id/textoNacimiento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/layoutNacimiento"
+                android:layout_below="@+id/campoApellidos" 
+                android:text="@string/fechaNac" />
+
+            <LinearLayout
+                android:id="@+id/layoutNacimiento"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/campoApellidos"
+                android:layout_below="@+id/textoNacimiento" >
+                
+                    <EditText
+                        android:id="@+id/campoFechaNacimiento"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:layout_weight=".60"
+                        android:inputType="datetime" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup1"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"    
+                        android:layout_weight=".40"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/campoMasculino"
+                            android:textSize="12dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"
+                            android:text="@string/masculino" />
+
+                        <RadioButton
+                            android:id="@+id/campoFemenino"
+                            android:layout_width="wrap_content"
+                            android:textSize="12dp"
+                            android:enabled="false"
+                            android:layout_height="wrap_content"
+                            android:text="@string/femenino" />
+                    </RadioGroup>
+
+                
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textoDireccion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/campoApellidos"
+                android:layout_below="@+id/layoutNacimiento"
+                android:text="@string/direccion" />
+
+            <LinearLayout
+                android:id="@+id/tablaDireccion1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textoDireccion"
+                android:layout_below="@+id/textoDireccion" >
+
+                    <EditText
+                        android:id="@+id/campoDireccion"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:layout_weight=".25"
+                        android:singleLine="true" />
+
+                    <EditText
+                        android:id="@+id/campoCP"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:layout_weight=".75"
+                        android:inputType="number"
+                        android:maxLength="5" />
+              </LinearLayout>
+              <LinearLayout
+                android:id="@+id/tablaDireccion2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textoDireccion"
+                android:layout_below="@+id/tablaDireccion1" >
+
+                    <EditText
+                        android:id="@+id/campoLocalidad"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:layout_weight=".50"
+                        android:singleLine="true" />
+
+                    <EditText
+                        android:id="@+id/campoProvincia"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:layout_weight=".50"
+                        android:singleLine="true" />
+                
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textoEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/campoUsuario"
+                android:layout_below="@+id/tablaDireccion2"
+                android:text="@string/email" />
+
+            <EditText
+                android:id="@+id/campoEmail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:layout_below="@+id/textoEmail"
+                android:layout_centerHorizontal="true"
+                android:singleLine="true" 
+                android:inputType="textEmailAddress"/>  
+              
+            <TextView
+                android:id="@+id/textoUsuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/campoUsuario"
+                android:layout_below="@+id/campoEmail"
+                android:text="@string/nombredeusuario" />
+
+            <EditText
+                android:id="@+id/campoUsuario"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:layout_below="@+id/textoUsuario"
+                android:layout_centerHorizontal="true"
+                android:singleLine="true" />
+
+            <TextView
+                android:id="@+id/textoPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/campoUsuario"
+                android:layout_below="@+id/campoUsuario"
+                android:text="@string/password" />
+
+            <EditText
+                android:id="@+id/campoPassword"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:layout_alignLeft="@+id/campoUsuario"
+                android:layout_below="@+id/textoPassword"
+                android:inputType="textPassword"
+                android:singleLine="true" />
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <RelativeLayout android:id="@+id/layoutBotones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center" >
+        
+        <Button
+            android:id="@+id/botonGuardarDatos"
+            android:layout_width="wrap_content"
+            android:enabled="false"
+            android:layout_height="wrap_content"
+            android:text="Guardar datos" 
+            android:layout_toRightOf="@+id/botonModificarDatos"/>
+
+        <Button
+            android:id="@+id/botonModificarDatos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="habilitarCampos"
+            android:text="Modificar datos" />
+        
+    </RelativeLayout>
+
+    
+
+</RelativeLayout>

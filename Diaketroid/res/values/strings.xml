@@ -9,5 +9,15 @@
     <string name="logo">Logo</string>
     <string name="modificarCuota">Modificar cuota</string>
     <string name="cancelarCuota">Cancelar cuota</string>
+    <string name="textoValorCuota">Cantidad (€)</string>
+    <string name="intervalo">Intervalo (meses)</string>
+    <string name="mensajeCuota">Al modificar la cuota, esta quedará cerrada con fecha actual y se creara una nueva cuota con fecha de inicio igual a la fecha de fin de la antigua cuota</string>
+    <string name="direccion">Dirección</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="email">Correo eléctronico</string>
+    <string name="masculino">Hombre</string>
+    <string name="femenino">Mujer</string>
+    <string name="fechaNac">Fecha nac.</string>
 
 </resources>

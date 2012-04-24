@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutCuota"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:background="@drawable/fondo"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/textoCuota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/textoValorCuota" />
+
+    <EditText
+        android:id="@+id/campoCuota"
+        android:layout_width="100dip"
+        android:maxLength="6"
+        android:gravity="center"
+        android:focusable="false"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textoCuota"
+        android:layout_centerHorizontal="true"
+        android:inputType="number" 
+        android:layout_marginBottom="20dip"/>
+    
+    <TextView
+        android:id="@+id/textoIntervalo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/campoCuota"
+        android:text="@string/intervalo" />
+
+    <EditText
+        android:id="@+id/campoIntervalo"
+        android:layout_width="50dip"
+        android:focusable="false"
+        android:gravity="center"
+        android:maxLength="2"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textoIntervalo"
+        android:layout_centerHorizontal="true"
+        android:inputType="number" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/botonGuardarCuota"
+            android:layout_width="wrap_content"
+            android:enabled="false"
+            android:layout_height="wrap_content"
+            android:text="Guardar cuota" 
+            android:layout_toRightOf="@+id/botonModificar"/>
+
+        <Button
+            android:id="@+id/botonModificar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="habilitarCampos"
+            android:text="Modificar cuota" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
