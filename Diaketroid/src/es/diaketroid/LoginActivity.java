@@ -79,7 +79,6 @@ public class LoginActivity extends Activity {
     		ArrayList<NameValuePair> parametros = new ArrayList<NameValuePair>();
     		parametros.add(new BasicNameValuePair("username", params[0]));
     		parametros.add(new BasicNameValuePair("password", md5(params[1])));
-    		Log.d("DIAK",md5(params[1]));
 			String respuesta = DriverHTTP.doPost(DriverHTTP.LOGIN_URL, parametros, getApplicationContext());
 			return respuesta;
 

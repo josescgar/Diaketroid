@@ -31,11 +31,11 @@ import android.util.Log;
 
 public class DriverHTTP {
 
-	public static final String LOGIN_URL = "http://diaketas.byethost13.com/login.php";
-	public static final String LOGOUT_URL = "http://diaketas.byethost13.com/logout.php";
+	public static final String LOGIN_URL = "http://diaketas.byethost13.com/ControladorLogin.php";
+	public static final String LOGOUT_URL = "http://diaketas.byethost13.com/ControladorLogout.php";
 	public static final String CUOTAS_URL = "http://diaketas.byethost13.com/ControladorCuota.php";
 	public static final String SOCIO_URL = "http://diaketas.byethost13.com/ControladorSocio.php";
-	public static final String HISTORIAL_URL = "";
+	public static final String HISTORIAL_URL = "http://diaketas.byethost13.com/ControladorHistorial.php";
 	
 	public static String doPost(String url, ArrayList<NameValuePair> parametros, Context appContext)
 	{

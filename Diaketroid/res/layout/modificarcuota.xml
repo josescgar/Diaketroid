@@ -17,13 +17,13 @@
     <EditText
         android:id="@+id/campoCuota"
         android:layout_width="100dip"
-        android:maxLength="6"
+        android:maxLength="8"
         android:gravity="center"
         android:focusable="false"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textoCuota"
         android:layout_centerHorizontal="true"
-        android:inputType="number" 
+        android:inputType="numberDecimal" 
         android:layout_marginBottom="20dip"/>
     
     <TextView
@@ -57,6 +57,7 @@
             android:layout_width="wrap_content"
             android:enabled="false"
             android:layout_height="wrap_content"
+            android:onClick="guardarDatosCuota"
             android:text="Guardar cuota" 
             android:layout_toRightOf="@+id/botonModificar"/>
 
