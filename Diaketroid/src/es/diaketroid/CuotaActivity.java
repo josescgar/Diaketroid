@@ -68,8 +68,10 @@ public class CuotaActivity extends Activity {
 	}
 	
 	public void guardarDatosCuota(View v){
-		cuota.setCantidad(Float.parseFloat(campoCuota.getText().toString()));
-		cuota.setIntervaloPagos(Integer.parseInt(campoIntervalo.getText().toString()));
+		if(campoCuota.getText().toString()!="")
+			cuota.setCantidad(Float.parseFloat(campoCuota.getText().toString()));
+		if(campoCuota.getText().toString()!="")
+			cuota.setIntervaloPagos(Integer.parseInt(campoIntervalo.getText().toString()));
 		cuota.setFechaFin(new Date());
 		
 		GuardarDatosCuotasTask task = new GuardarDatosCuotasTask();
@@ -151,6 +153,8 @@ public class CuotaActivity extends Activity {
 	       	
 	       	
 	       	if(error!=null){
+	       		findViewById(R.id.botonModificar).setEnabled(false);
+	       		findViewById(R.id.botonGuardarCuota).setEnabled(false);
 	       		new AlertDialog.Builder(viewContext)
 				.setMessage(error)
 				.setPositiveButton("Cerrar", new OnClickListener() {
@@ -242,12 +246,8 @@ public class CuotaActivity extends Activity {
    	
    	@Override
 		protected String doInBackground(Void... params) {
-   		
-	   		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-			String datos = gson.toJson(cuota, Cuota.class);
 	   		ArrayList<NameValuePair> parametros = new ArrayList<NameValuePair>();
 	   		parametros.add(new BasicNameValuePair("tarea", "cancelar"));
-	   		parametros.add(new BasicNameValuePair("datos", datos));
 			String respuesta = DriverHTTP.doPost(DriverHTTP.CUOTAS_URL, parametros, getApplicationContext());
 			return respuesta;
 		}
