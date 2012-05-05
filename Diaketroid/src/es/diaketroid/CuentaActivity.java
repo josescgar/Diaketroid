@@ -6,6 +6,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.apache.http.NameValuePair;
@@ -20,6 +21,7 @@ import es.diaketroid.http.DriverHTTP;
 import es.diaketroid.modelo.Socio;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -30,6 +32,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -41,6 +44,9 @@ public class CuentaActivity extends Activity{
 	private Boolean habilitar;
 	
 	private Context viewContext = this;
+	private int dia;
+	private int mes;
+	private int año;
 	private EditText campoNombre;
 	private EditText campoApellidos;
 	private RadioButton campoMasculino;
@@ -83,19 +89,39 @@ public class CuentaActivity extends Activity{
 	public void habilitarCampos(View v){
 		
 		campoNombre.setFocusableInTouchMode(habilitar);
+		campoNombre.setFocusable(habilitar);
 		campoApellidos.setFocusableInTouchMode(habilitar);
-		campoFechaNacimiento.setFocusableInTouchMode(habilitar);
+		campoApellidos.setFocusable(habilitar);
 		campoMasculino.setEnabled(habilitar);
 		campoFemenino.setEnabled(habilitar);
 		campoDireccion.setFocusableInTouchMode(habilitar);
+		campoDireccion.setFocusable(habilitar);
 		campoCP.setFocusableInTouchMode(habilitar);
+		campoCP.setFocusable(habilitar);		
 		campoLocalidad.setFocusableInTouchMode(habilitar);
+		campoLocalidad.setFocusable(habilitar);		
 		campoProvincia.setFocusableInTouchMode(habilitar);
+		campoProvincia.setFocusable(habilitar);		
 		campoEmail.setFocusableInTouchMode(habilitar);
+		campoEmail.setFocusable(habilitar);		
 		campoUsuario.setFocusableInTouchMode(habilitar);
+		campoUsuario.setFocusable(habilitar);
 		campoPassword.setFocusableInTouchMode(habilitar);
+		campoPassword.setFocusable(habilitar);
+		
 		btnmod.setEnabled(false);
 		btnguardar.setEnabled(true);
+		
+		if(habilitar)
+			campoFechaNacimiento.setOnClickListener(new View.OnClickListener() {
+				
+				public void onClick(View v) {
+					new DatePickerDialog(v.getContext(), listenerFecha, año, mes, dia).show();
+					
+				}
+			});
+		else
+			campoFechaNacimiento.setOnClickListener(null);
 		
 		habilitar=true;
 	}
@@ -110,8 +136,6 @@ public class CuentaActivity extends Activity{
 		Date auxfecha=null;
 		try {
 			auxfecha = new SimpleDateFormat("dd-MM-yyyy").parse(campoFechaNacimiento.getText().toString());
-			if(campoFechaNacimiento.getText().length()!=10)
-				throw new ParseException(null, 0);
 			if(!auxfecha.equals(socio.getFechaNacimiento()))
 				socio.setFechaNacimiento(auxfecha);
 		} catch (ParseException e) {
@@ -154,7 +178,15 @@ public class CuentaActivity extends Activity{
 		
 	}
 	
-	
+	private DatePickerDialog.OnDateSetListener listenerFecha =
+            new DatePickerDialog.OnDateSetListener() {
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                	año = year;
+                	mes = monthOfYear;
+                	dia = dayOfMonth;     
+                    campoFechaNacimiento.setText(new StringBuilder().append(dia+"-").append(mes+1+"-").append(año));
+                }
+            };
 	
 	class ConsultarDatosCuentaTask extends AsyncTask<Void,Void,String>{
     	
@@ -217,7 +249,12 @@ public class CuentaActivity extends Activity{
 
 			campoNombre.setText(socio.getNombre());
 			campoApellidos.setText(socio.getApellidos());
-			campoFechaNacimiento.setText(new SimpleDateFormat("dd-MM-yyyy").format(socio.getFechaNacimiento()));
+			SimpleDateFormat fecha = new SimpleDateFormat("dd-MM-yyyy");
+			campoFechaNacimiento.setText(fecha.format(socio.getFechaNacimiento()));
+			dia = fecha.getCalendar().get(Calendar.DAY_OF_MONTH);
+			mes = fecha.getCalendar().get(Calendar.MONTH);
+			año = fecha.getCalendar().get(Calendar.YEAR);
+			
 			
 			if(socio.getSexo().equals("M"))
 				campoMasculino.setChecked(true);

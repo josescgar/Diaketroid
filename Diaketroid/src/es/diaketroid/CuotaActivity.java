@@ -35,10 +35,22 @@ public class CuotaActivity extends Activity {
 	private EditText campoIntervalo;
 	private Cuota cuota;
 	private Context viewContext = this;
+	private Button btnguardar;
+	private Button btnmod;
+	private Button btncancelar;
 
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.menucuota);
+        setContentView(R.layout.modificarcuota);
+        
+        campoCuota = (EditText) findViewById(R.id.campoCuota);
+		campoIntervalo = (EditText) findViewById(R.id.campoIntervalo);
+		btnguardar = (Button) findViewById(R.id.botonGuardarCuota);
+		btnmod = (Button) findViewById(R.id.botonModificar);
+		btncancelar = (Button) findViewById(R.id.botonCancelarCuota);
+		
+		ObtenerCuotaTask taskDatos = new ObtenerCuotaTask();
+		taskDatos.execute();
     }
 	
 	
@@ -57,15 +69,6 @@ public class CuotaActivity extends Activity {
 		}).show();
 	}
 	
-	public void modificarCuota(View v){
-		setContentView(R.layout.modificarcuota);
-		
-		campoCuota = (EditText) findViewById(R.id.campoCuota);
-		campoIntervalo = (EditText) findViewById(R.id.campoIntervalo);
-		
-		ObtenerCuotaTask taskDatos = new ObtenerCuotaTask();
-		taskDatos.execute();
-	}
 	
 	public void guardarDatosCuota(View v){
 		if(campoCuota.getText().toString()!="")
@@ -88,23 +91,15 @@ public class CuotaActivity extends Activity {
 			}
 		}).show();
 		
-		findViewById(R.id.campoCuota).setFocusableInTouchMode(true);
-		findViewById(R.id.campoIntervalo).setFocusableInTouchMode(true);
-		findViewById(R.id.campoCuota).setFocusable(true);
-		findViewById(R.id.campoIntervalo).setFocusable(true);
-		Button btnguardar = (Button) findViewById(R.id.botonGuardarCuota);
-		Button btnmod = (Button) findViewById(R.id.botonModificar);
+		campoCuota.setFocusableInTouchMode(true);
+		campoIntervalo.setFocusableInTouchMode(true);
+		campoCuota.setFocusable(true);
+		campoIntervalo.setFocusable(true);
+		
 		btnmod.setEnabled(false);
 		btnguardar.setEnabled(true);
 	}
 	
-	public void onBackPressed(){
-		
-		if(findViewById(R.id.layoutCuota)!=null)
-			setContentView(R.layout.menucuota);
-		else
-			finish();
-	}
 	
 	class ObtenerCuotaTask extends AsyncTask<Void,Void,String>{
 		private ProgressDialog cargando;
@@ -153,8 +148,9 @@ public class CuotaActivity extends Activity {
 	       	
 	       	
 	       	if(error!=null){
-	       		findViewById(R.id.botonModificar).setEnabled(false);
-	       		findViewById(R.id.botonGuardarCuota).setEnabled(false);
+	       		btnmod.setEnabled(false);
+	       		btnguardar.setEnabled(false);
+	       		btncancelar.setEnabled(false);
 	       		new AlertDialog.Builder(viewContext)
 				.setMessage(error)
 				.setPositiveButton("Cerrar", new OnClickListener() {
@@ -213,6 +209,13 @@ public class CuotaActivity extends Activity {
 					ObtenerCuotaTask task=new ObtenerCuotaTask();
 					task.execute();
 					Toast.makeText(getApplicationContext(), "Cuota modificada con éxito", Toast.LENGTH_LONG).show();
+					btnguardar.setEnabled(false);
+					btnmod.setEnabled(true);
+					campoCuota.setFocusableInTouchMode(false);
+					campoCuota.setFocusable(false);
+					campoIntervalo.setFocusableInTouchMode(false);
+					campoIntervalo.setFocusable(false);
+					
 				} else if (obj!=null && obj.getString("estado").equals("error")) {
 					error=obj.getString("msg");
 				}
@@ -270,6 +273,11 @@ public class CuotaActivity extends Activity {
 	       	try {
 				if(obj!=null && obj.getString("estado").equals("OK")){
 					Toast.makeText(getApplicationContext(), "Cuota cancelada con éxito", Toast.LENGTH_LONG).show();
+					campoCuota.setText(null);
+					campoIntervalo.setText(null);
+					btnmod.setEnabled(false);
+					btnguardar.setEnabled(false);
+					btncancelar.setEnabled(false);
 				} else if (obj!=null && obj.getString("estado").equals("error")) {
 					error=obj.getString("msg");
 				}

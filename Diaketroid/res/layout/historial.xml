@@ -1,8 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/fondo" >
-    
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"
+    	android:background="@drawable/fondo" >
 
+	<RelativeLayout 
+	    android:id="@+id/layoutFechas"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content">
+	    
+	    <RelativeLayout android:id="@+id/layoutBotones"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentTop="true"
+	        android:gravity="center" >
+	        
+	        <TextView android:id="@+id/textoDesde"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Desde:"
+	            />
+	
+	        <EditText
+	                android:id="@+id/campoFechaIni"
+	                android:layout_width="120dp"
+	                android:layout_height="wrap_content"
+	                android:layout_below="@+id/textoDesde"
+	                android:focusable="false"
+	                android:onClick="mostrarFecha"
+	                android:inputType="date"
+	                android:singleLine="true" />
+	        
+	    </RelativeLayout>
+	
+	    <EditText
+	        android:id="@+id/campoFechaFin"
+	        android:layout_width="120dp"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBottom="@+id/layoutBotones"
+	        android:layout_toRightOf="@+id/layoutBotones"
+	        android:focusable="false"
+	        android:onClick="mostrarFecha"
+	        android:inputType="date"
+	        android:singleLine="true" />
+	
+	    <TextView
+	        android:id="@+id/textoHasta"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_above="@+id/campoFechaFin"
+	        android:layout_alignLeft="@+id/campoFechaFin"
+	        android:text="Hasta:" />
+	
+	    <Button
+	        android:id="@+id/botonHistorial"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:onClick="obtenerHistorial"
+	        android:layout_alignBaseline="@+id/campoFechaFin"
+	        android:layout_alignBottom="@+id/campoFechaFin"
+	        android:layout_toRightOf="@+id/campoFechaFin"
+	        android:text="Obtener" />
+	
+	</RelativeLayout>
+	
+	<LinearLayout 
+	    android:id="@+id/layoutCabeceras"
+	    android:layout_height="wrap_content"
+	    android:padding="5dp"
+	    android:gravity="center_horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_below="@+id/layoutFechas">
+	    
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_weight=".33"
+	        android:text="Tipo"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+	    <TextView
+	        android:text="Cantidad (€)"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_weight=".33"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+	
+	    <TextView
+	        android:text="Fecha"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_weight=".33"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+	</LinearLayout>
+	
+	<LinearLayout 
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/layoutCabeceras"
+	    android:layout_width="fill_parent">
+	    
+	    <ListView
+	        android:id="@android:id/list"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:padding="5dp"
+	        android:layout_weight="1" >
+    	</ListView>
+    	<TextView android:id="@+id/android:empty"
+	        android:background="@null"
+	        android:text="NO HAY MOVIMIENTOS DISPONIBLES"
+	        android:layout_height="fill_parent"
+	        android:layout_width="fill_parent"
+        />
+    	
+	</LinearLayout>
+	
+	
 </RelativeLayout>
