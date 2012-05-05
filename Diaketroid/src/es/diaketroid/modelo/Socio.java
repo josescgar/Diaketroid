@@ -1,3 +1,9 @@
+/**
+ *
+ * Representacion de los socios en el modelo
+ * @author Jose A. Escobar
+ *
+ */
 package es.diaketroid.modelo;
 
 import java.text.ParseException;

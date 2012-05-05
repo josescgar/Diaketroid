@@ -1,3 +1,9 @@
+/**
+ *
+ * Gestión de historial de pagos y colaboraciones del socio
+ * @author Jose A. Escobar
+ *
+ */
 package es.diaketroid;
 
 import java.util.Date;
@@ -6,7 +12,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
@@ -23,7 +28,6 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -97,12 +101,12 @@ public class HistorialActivity extends ListActivity {
         campoFechaFin.setText(new StringBuilder().append(finDia+"-").append(finMes+1+"-").append(finAño));
 	}
 	
-	public void obtenerHistorial(View v){
-		ObtenerHistorialTask task = new ObtenerHistorialTask();
+	public void consultarHistorial(View v){
+		HistorialTask task = new HistorialTask();
 		task.execute();
 	}
 	
-	class ObtenerHistorialTask extends AsyncTask<Void,Void,String>{
+	class HistorialTask extends AsyncTask<Void,Void,String>{
     	
     	private ProgressDialog cargando;
     	

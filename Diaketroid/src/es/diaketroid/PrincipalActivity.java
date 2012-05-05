@@ -1,8 +1,14 @@
+/**
+ *
+ * Gestión de pestañas de la interfaz y funcionaldiad de 
+ * desidentificacion del socio
+ * @author Jose A. Escobar
+ *
+ */
 package es.diaketroid;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import es.diaketroid.http.DriverHTTP;
 import es.diaketroid.http.cookies.PersistentCookieStore;
 import android.app.AlertDialog;
@@ -16,10 +22,7 @@ import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.TabHost;
 
 public class PrincipalActivity extends TabActivity {

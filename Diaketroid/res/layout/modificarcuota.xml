@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:enabled="false"
             android:layout_height="wrap_content"
-            android:onClick="guardarDatosCuota"
+            android:onClick="guardarCuota"
             android:text="Guardar" 
             android:layout_toRightOf="@+id/botonCancelarCuota"/>
         
@@ -73,7 +73,7 @@
             android:id="@+id/botonModificar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="habilitarCampos"
+            android:onClick="modificarCuota"
             android:text="Modificar" />
 
     </RelativeLayout>

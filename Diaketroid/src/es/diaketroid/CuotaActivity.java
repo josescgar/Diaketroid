@@ -1,33 +1,32 @@
+/**
+ *
+ * Gestión de cuotas del socio
+ * @author Jose A. Escobar
+ *
+ */
 package es.diaketroid;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import es.diaketroid.http.DriverHTTP;
 import es.diaketroid.modelo.Cuota;
-import es.diaketroid.modelo.Socio;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class CuotaActivity extends Activity {
@@ -49,7 +48,7 @@ public class CuotaActivity extends Activity {
 		btnmod = (Button) findViewById(R.id.botonModificar);
 		btncancelar = (Button) findViewById(R.id.botonCancelarCuota);
 		
-		ObtenerCuotaTask taskDatos = new ObtenerCuotaTask();
+		ConsultarDatosCuotaTask taskDatos = new ConsultarDatosCuotaTask();
 		taskDatos.execute();
     }
 	
@@ -70,18 +69,18 @@ public class CuotaActivity extends Activity {
 	}
 	
 	
-	public void guardarDatosCuota(View v){
+	public void guardarCuota(View v){
 		if(campoCuota.getText().toString()!="")
 			cuota.setCantidad(Float.parseFloat(campoCuota.getText().toString()));
 		if(campoCuota.getText().toString()!="")
 			cuota.setIntervaloPagos(Integer.parseInt(campoIntervalo.getText().toString()));
 		cuota.setFechaFin(new Date());
 		
-		GuardarDatosCuotasTask task = new GuardarDatosCuotasTask();
+		GuardarDatosCuotaTask task = new GuardarDatosCuotaTask();
 		task.execute();
 	}
 	
-	public void habilitarCampos(View v){
+	public void modificarCuota(View v){
 		
 		new AlertDialog.Builder(v.getContext())
 		.setMessage(getString(R.string.mensajeCuota))
@@ -101,7 +100,7 @@ public class CuotaActivity extends Activity {
 	}
 	
 	
-	class ObtenerCuotaTask extends AsyncTask<Void,Void,String>{
+	class ConsultarDatosCuotaTask extends AsyncTask<Void,Void,String>{
 		private ProgressDialog cargando;
     	
    	 @Override
@@ -167,7 +166,7 @@ public class CuotaActivity extends Activity {
 		}
 	}
 	
-	class GuardarDatosCuotasTask extends AsyncTask<Void,Void,String>{
+	class GuardarDatosCuotaTask extends AsyncTask<Void,Void,String>{
 		private ProgressDialog cargando;
     	
    	 @Override
@@ -206,7 +205,7 @@ public class CuotaActivity extends Activity {
 	       	
 	       	try {
 				if(obj!=null && obj.getString("estado").equals("OK")){
-					ObtenerCuotaTask task=new ObtenerCuotaTask();
+					ConsultarDatosCuotaTask task=new ConsultarDatosCuotaTask();
 					task.execute();
 					Toast.makeText(getApplicationContext(), "Cuota modificada con éxito", Toast.LENGTH_LONG).show();
 					btnguardar.setEnabled(false);

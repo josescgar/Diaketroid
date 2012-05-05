@@ -1,22 +1,24 @@
+/**
+ *
+ * Gestión de los datos referentes al socio
+ * @author Jose A. Escobar
+ *
+ */
 package es.diaketroid;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import es.diaketroid.http.DriverHTTP;
 import es.diaketroid.modelo.Socio;
 import android.app.Activity;
@@ -25,17 +27,14 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class CuentaActivity extends Activity{
@@ -92,7 +91,7 @@ public class CuentaActivity extends Activity{
 		tareaConsultar.execute();
     }
 	
-	public void habilitarCampos(View v){
+	public void modificarDatos(View v){
 		
 		campoNombre.setFocusableInTouchMode(habilitar);
 		campoNombre.setFocusable(habilitar);
@@ -138,7 +137,7 @@ public class CuentaActivity extends Activity{
 		habilitar=true;
 	}
 	
-	public void guardarDatosCuenta(View v){
+	public void guardar(View v){
 		if(!campoNombre.getText().toString().equals(socio.getNombre()) && !campoNombre.getText().toString().equals(""))
 			socio.setNombre(campoNombre.getText().toString());
 		
@@ -337,7 +336,7 @@ public class CuentaActivity extends Activity{
 				if(obj!=null && obj.getString("estado").equals("OK")){
 					Toast.makeText(viewContext, "Datos modificados correctamente", Toast.LENGTH_LONG).show();
 					habilitar=false;
-					habilitarCampos(null);
+					modificarDatos(null);
 					guardar.setEnabled(false);
 					modificarDatos.setEnabled(true);
 				} else if (obj!=null && obj.getString("estado").equals("error")) {

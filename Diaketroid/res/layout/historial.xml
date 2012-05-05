@@ -56,7 +56,7 @@
 	        android:id="@+id/botonHistorial"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:onClick="obtenerHistorial"
+	        android:onClick="consultarHistorial"
 	        android:layout_alignBaseline="@+id/campoFechaFin"
 	        android:layout_alignBottom="@+id/campoFechaFin"
 	        android:layout_toRightOf="@+id/campoFechaFin"

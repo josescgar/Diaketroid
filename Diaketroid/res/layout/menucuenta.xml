@@ -281,7 +281,7 @@
             android:id="@+id/botonGuardarDatos"
             android:layout_width="wrap_content"
             android:enabled="false"
-            android:onClick="guardarDatosCuenta"
+            android:onClick="guardar"
             android:layout_height="wrap_content"
             android:text="Guardar datos" 
             android:layout_toRightOf="@+id/botonModificarDatos"/>
@@ -290,7 +290,7 @@
             android:id="@+id/botonModificarDatos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="habilitarCampos"
+            android:onClick="modificarDatos"
             android:text="Modificar datos" />
         
     </RelativeLayout>

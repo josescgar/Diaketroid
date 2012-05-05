@@ -1,9 +1,14 @@
+/**
+ *
+ * Representación de los movimientos en el modelo
+ * @author Jose A. Escobar
+ *
+ */
 package es.diaketroid.modelo;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
