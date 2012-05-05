@@ -17,6 +17,9 @@ public class Socio {
 	private String localidad;
 	private String provincia;
 	private String email;
+	private String telefonoFijo;
+	private String telefonoMovil;
+	private String nacionalidad;
 	private Date fechaNacimiento;
 	private String sexo;
 	private String password;
@@ -33,6 +36,9 @@ public class Socio {
 				e.printStackTrace();
 			}
 			this.sexo=objeto.getString("Sexo");
+			this.telefonoFijo=objeto.getString("TelefonoFijo");
+			this.telefonoMovil=objeto.getString("TelefonoMovil");
+			this.nacionalidad=objeto.getString("Nacionalidad");
 			this.direccion=objeto.getString("Direccion");
 			this.codigoPostal=objeto.getString("CP");
 			this.localidad=objeto.getString("Localidad");
@@ -46,6 +52,30 @@ public class Socio {
 		
 	}
 	
+	public String getTelefonoFijo() {
+		return telefonoFijo;
+	}
+
+	public void setTelefonoFijo(String telefonoFijo) {
+		this.telefonoFijo = telefonoFijo;
+	}
+
+	public String getTelefonoMovil() {
+		return telefonoMovil;
+	}
+
+	public void setTelefonoMovil(String telefonoMovil) {
+		this.telefonoMovil = telefonoMovil;
+	}
+
+	public String getNacionalidad() {
+		return nacionalidad;
+	}
+
+	public void setNacionalidad(String nacionalidad) {
+		this.nacionalidad = nacionalidad;
+	}
+
 	public String getUsuario() {
 		return usuario;
 	}

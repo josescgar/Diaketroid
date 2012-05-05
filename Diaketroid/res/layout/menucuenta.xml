@@ -102,13 +102,30 @@
 
                 
             </LinearLayout>
+            
+            <TextView
+                android:id="@+id/textoNacionalidad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/campoUsuario"
+                android:layout_below="@+id/layoutNacimiento"
+                android:text="Nacionalidad:" />
+
+            <EditText
+                android:id="@+id/campoNacionalidad"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:layout_below="@+id/textoNacionalidad"
+                android:layout_centerHorizontal="true"
+                android:singleLine="true" /> 
 
             <TextView
                 android:id="@+id/textoDireccion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/campoApellidos"
-                android:layout_below="@+id/layoutNacimiento"
+                android:layout_below="@+id/campoNacionalidad"
                 android:text="@string/direccion" />
 
             <LinearLayout
@@ -159,13 +176,50 @@
                         android:singleLine="true" />
                 
             </LinearLayout>
+			
+            <TextView
+                android:id="@+id/textoFijo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/campoUsuario"
+                android:layout_below="@+id/tablaDireccion2"
+                android:text="Telefono fijo:" />
 
+            <EditText
+                android:id="@+id/campoFijo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:layout_below="@+id/textoFijo"
+                android:layout_centerHorizontal="true"
+                android:singleLine="true" 
+                android:inputType="phone"/>    
+              
+              <TextView
+                android:id="@+id/textoMovil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/campoUsuario"
+                android:layout_below="@+id/campoFijo"
+                android:text="Telefono movil:" />
+
+            <EditText
+                android:id="@+id/campoMovil"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:layout_below="@+id/textoMovil"
+                android:layout_centerHorizontal="true"
+                android:singleLine="true" 
+                android:inputType="phone"/> 
+              
+              
             <TextView
                 android:id="@+id/textoEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/campoUsuario"
-                android:layout_below="@+id/tablaDireccion2"
+                android:layout_below="@+id/campoMovil"
                 android:text="@string/email" />
 
             <EditText

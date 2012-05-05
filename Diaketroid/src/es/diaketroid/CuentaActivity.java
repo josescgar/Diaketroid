@@ -58,9 +58,12 @@ public class CuentaActivity extends Activity{
 	private EditText campoCP;
 	private EditText campoDireccion;
 	private EditText campoFechaNacimiento;
-	private EditText campoPassword;
-	private Button btnguardar;
-	private Button btnmod;
+	private EditText campoContraseña;
+	private EditText campoTlfFijo;
+	private EditText campoTlfMovil;
+	private EditText campoNacionalidad;
+	private Button guardar;
+	private Button modificarDatos;
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,9 +81,12 @@ public class CuentaActivity extends Activity{
         campoProvincia = (EditText) findViewById(R.id.campoProvincia);
         campoEmail = (EditText) findViewById(R.id.campoEmail);
         campoUsuario =(EditText) findViewById(R.id.campoUsuario);
-        campoPassword =(EditText) findViewById(R.id.campoPassword);
-        btnmod = (Button) findViewById(R.id.botonModificarDatos);
-        btnguardar = (Button) findViewById(R.id.botonGuardarDatos);
+        campoContraseña =(EditText) findViewById(R.id.campoPassword);
+        modificarDatos = (Button) findViewById(R.id.botonModificarDatos);
+        guardar = (Button) findViewById(R.id.botonGuardarDatos);
+        campoTlfFijo = (EditText) findViewById(R.id.campoFijo);
+        campoTlfMovil = (EditText) findViewById(R.id.campoMovil);
+        campoNacionalidad = (EditText) findViewById(R.id.campoNacionalidad);
         
 		ConsultarDatosCuentaTask tareaConsultar = new ConsultarDatosCuentaTask();
 		tareaConsultar.execute();
@@ -90,6 +96,12 @@ public class CuentaActivity extends Activity{
 		
 		campoNombre.setFocusableInTouchMode(habilitar);
 		campoNombre.setFocusable(habilitar);
+		campoTlfFijo.setFocusableInTouchMode(habilitar);
+		campoTlfFijo.setFocusable(habilitar);
+		campoTlfMovil.setFocusableInTouchMode(habilitar);
+		campoTlfMovil.setFocusable(habilitar);
+		campoNacionalidad.setFocusableInTouchMode(habilitar);
+		campoNacionalidad.setFocusable(habilitar);
 		campoApellidos.setFocusableInTouchMode(habilitar);
 		campoApellidos.setFocusable(habilitar);
 		campoMasculino.setEnabled(habilitar);
@@ -106,11 +118,11 @@ public class CuentaActivity extends Activity{
 		campoEmail.setFocusable(habilitar);		
 		campoUsuario.setFocusableInTouchMode(habilitar);
 		campoUsuario.setFocusable(habilitar);
-		campoPassword.setFocusableInTouchMode(habilitar);
-		campoPassword.setFocusable(habilitar);
+		campoContraseña.setFocusableInTouchMode(habilitar);
+		campoContraseña.setFocusable(habilitar);
 		
-		btnmod.setEnabled(false);
-		btnguardar.setEnabled(true);
+		modificarDatos.setEnabled(false);
+		guardar.setEnabled(true);
 		
 		if(habilitar)
 			campoFechaNacimiento.setOnClickListener(new View.OnClickListener() {
@@ -158,6 +170,16 @@ public class CuentaActivity extends Activity{
 		if(!campoLocalidad.getText().toString().equals(socio.getLocalidad()) && !campoLocalidad.getText().toString().equals(""))
 			socio.setLocalidad(campoLocalidad.getText().toString());
 		
+		if(!campoTlfFijo.getText().toString().equals(socio.getTelefonoFijo()) && !campoTlfFijo.getText().toString().equals(""))
+			socio.setTelefonoFijo(campoTlfFijo.getText().toString());
+		
+		if(!campoTlfMovil.getText().toString().equals(socio.getTelefonoMovil()) && !campoTlfMovil.getText().toString().equals(""))
+			socio.setTelefonoMovil(campoTlfMovil.getText().toString());
+		
+		if(!campoNacionalidad.getText().toString().equals(socio.getNacionalidad()) && !campoNacionalidad.getText().toString().equals(""))
+			socio.setNacionalidad(campoNacionalidad.getText().toString());
+		
+		
 		if(!campoProvincia.getText().toString().equals(socio.getProvincia()) && !campoProvincia.getText().toString().equals(""))
 			socio.setProvincia(campoProvincia.getText().toString());
 		
@@ -170,8 +192,8 @@ public class CuentaActivity extends Activity{
 		if(!campoLocalidad.getText().toString().equals(socio.getLocalidad()) && !campoLocalidad.getText().toString().equals(""))
 			socio.setLocalidad(campoLocalidad.getText().toString());
 		
-		if(!campoPassword.getText().toString().equals(""))
-			socio.setPassword(md5(campoPassword.getText().toString()));
+		if(!campoContraseña.getText().toString().equals(""))
+			socio.setPassword(md5(campoContraseña.getText().toString()));
 		
 		GuardarDatosCuentaTask taskGuardar = new GuardarDatosCuentaTask();
 		taskGuardar.execute();
@@ -262,6 +284,9 @@ public class CuentaActivity extends Activity{
 				campoFemenino.setChecked(true);
 			
 			campoDireccion.setText(socio.getDireccion());
+			campoTlfFijo.setText(socio.getTelefonoFijo());
+			campoTlfMovil.setText(socio.getTelefonoMovil());
+			campoNacionalidad.setText(socio.getNacionalidad());
 			campoCP.setText(socio.getCodigoPostal());
 			campoLocalidad.setText(socio.getLocalidad());
 			campoProvincia.setText(socio.getProvincia());
@@ -313,8 +338,8 @@ public class CuentaActivity extends Activity{
 					Toast.makeText(viewContext, "Datos modificados correctamente", Toast.LENGTH_LONG).show();
 					habilitar=false;
 					habilitarCampos(null);
-					btnguardar.setEnabled(false);
-					btnmod.setEnabled(true);
+					guardar.setEnabled(false);
+					modificarDatos.setEnabled(true);
 				} else if (obj!=null && obj.getString("estado").equals("error")) {
 					error=obj.getString("msg");
 				}
